@@ -20,9 +20,12 @@ return new class extends Migration
 
         Schema::create('project_tasks', function (Blueprint $table) {
             $table->id();
-            $table->integer('project_id');
-            $table->integer('task_id');
+            $table->foreignId('project_id');
+            $table->foreignId('task_id');
             $table->timestamps();
+
+            $table->foreign('project_id')->references('id')->on('projects');
+            $table->foreign('task_id')->references('id')->on('tasks');
         });
     }
 

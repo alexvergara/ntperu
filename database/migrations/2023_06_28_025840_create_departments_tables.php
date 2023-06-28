@@ -19,9 +19,12 @@ return new class extends Migration
 
         Schema::create('employee_department', function (Blueprint $table) {
             $table->id();
-            $table->integer('employee_id');
-            $table->integer('department_id');
+            $table->foreignId('employee_id');
+            $table->foreignId('department_id');
             $table->timestamps();
+
+            $table->foreign('employee_id')->references('id')->on('employees');
+            $table->foreign('department_id')->references('id')->on('departments');
         });
     }
 

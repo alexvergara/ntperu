@@ -19,9 +19,12 @@ return new class extends Migration
 
         Schema::create('product_category', function (Blueprint $table) {
             $table->id();
-            $table->integer('product_id');
-            $table->integer('category_id');
+            $table->foreignId('product_id');
+            $table->foreignId('category_id');
             $table->timestamps();
+
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 

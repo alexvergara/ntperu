@@ -20,10 +20,13 @@ return new class extends Migration
 
         Schema::create('purchase_orders', function (Blueprint $table) {
             $table->id();
-            $table->integer('supplier_id');
-            $table->integer('product_id');
+            $table->foreignId('supplier_id');
+            $table->foreignId('product_id');
             $table->integer('quantity');
             $table->timestamps();
+
+            $table->foreign('supplier_id')->references('id')->on('suppliers');
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 

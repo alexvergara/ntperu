@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            $table->integer('order_id');
+            $table->foreignId('order_id');
             $table->date('due_date');
             $table->decimal('amount', 10, 2);
             $table->timestamps();
+
+            $table->foreign('order_id')->references('id')->on('orders');
         });
     }
 

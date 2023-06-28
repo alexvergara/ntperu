@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
-            $table->integer('employee_id');
+            $table->foreignId('employee_id');
             $table->dateTime('clock_in');
             $table->dateTime('clock_out')->nullable();
             $table->timestamps();
+
+            $table->foreign('employee_id')->references('id')->on('employees');
         });
     }
 

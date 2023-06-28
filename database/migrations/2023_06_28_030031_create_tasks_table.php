@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 30);
             $table->text('description');
-            $table->integer('assigned_to');
+            $table->foreignId('assigned_to');
             $table->timestamps();
             
             $table->foreign('assigned_to')->references('id')->on('users');
