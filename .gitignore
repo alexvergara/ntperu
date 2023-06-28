@@ -21,3 +21,5 @@ yarn-error.log
 # Alex
 .env.*
 !.env.example
+*_back
+*_test
