@@ -19,6 +19,5 @@ yarn-error.log
 /.vscode
 
 # Alex
-.env
 .env.*
 !.env.example
