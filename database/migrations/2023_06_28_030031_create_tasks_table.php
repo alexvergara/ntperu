@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name', 30);
             $table->text('description');
             $table->integer('assigned_to');
             $table->timestamps();
+            
+            $table->foreign('assigned_to')->references('id')->on('users');
         });
     }
 

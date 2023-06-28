@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name', 20);
             $table->string('email')->unique();
             $table->integer('company_id');
             $table->timestamps();
+            
+            $table->foreign('company_id')->references('id')->on('companies');
         });
     }
 
